@@ -2,23 +2,56 @@
 
 namespace App\Models;
 
-use CodeIgniter\Model;
+use App\EntityFramework\Core\Entity;
+use App\EntityFramework\Attributes\Table;
+use App\EntityFramework\Attributes\Key;
+use App\EntityFramework\Attributes\DatabaseGenerated;
+use App\EntityFramework\Attributes\Column;
+use App\EntityFramework\Attributes\Required;
+use App\EntityFramework\Attributes\ForeignKey;
+use App\EntityFramework\Attributes\InverseProperty;
+use App\EntityFramework\Attributes\Index;
 
-class UserAuthorization
+/**
+ * UserAuthorization Entity
+ * Join entity for many-to-many relationship between User and Authorization
+ * EF Core compatible entity
+ */
+#[Table("UserAuthorizations")]
+#[Index(["UserId", "AuthorizationId"], isUnique: true)]
+class UserAuthorization extends Entity
 {
+    #[Key]
+    #[DatabaseGenerated(DatabaseGenerated::IDENTITY)]
+    #[Column("Id", "INT")]
     public int $Id;
+
+    #[Required]
+    #[ForeignKey("User")]
+    #[Column("UserId", "INT")]
     public int $UserId;
+
+    #[Required]
+    #[ForeignKey("Authorization")]
+    #[Column("AuthorizationId", "INT")]
     public int $AuthorizationId;
 
     /** @var User $User */
-    public User $User;
-    /** @var Authorization $Authorization */
-    public Authorization $Authorization;
+    #[InverseProperty("UserAuthorizations")]
+    public ?User $User = null;
 
-    public function __construct($userId, $authorizationId)
+    /** @var Authorization $Authorization */
+    #[InverseProperty("UserAuthorizations")]
+    public ?Authorization $Authorization = null;
+
+    public function __construct($userId = null, $authorizationId = null)
     {
-        $this->UserId = $userId;
-        $this->AuthorizationId = $authorizationId;
+        if ($userId !== null) {
+            $this->UserId = $userId;
+        }
+        if ($authorizationId !== null) {
+            $this->AuthorizationId = $authorizationId;
+        }
     }
 }
 
