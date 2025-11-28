@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+  integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+<title>Hello, world!</title>
+<style>
+  body *.dev-active {
+    border: 1px dotted rgba(91, 91, 206, 0.328);
+  }
+
+  * {
+    box-shadow: none !important;
+  }
+</style>
+
+<head>
+</head>
+
+<body class="dev">
+  <app-root></app-root>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+    crossorigin="anonymous"></script>
+
+  <script>
+    var BASE_BODY;
+    var navbarComp =
+    {
+      sType: "nav ", class: "navbar navbar-expand-lg navbar-light bg-light", sChilds: [
+        {
+          sType: "div", class: "container-fluid", sChilds: [
+            { sType: "a", class: "navbar-brand", href: "#", text: "Navbar" },
+            {
+              sType: "button", class: "navbar-toggler", type: "button", "data-bs-toggle": "collapse", "data-bs-target": "#navbarSupportedContent", "aria-controls": "navbarSupportedContent", "aria-expanded": "false", "aria-label": "Toggle navigation", sChilds: [
+                { sType: "span", class: "navbar-toggler-icon" }
+              ]
+            },
+            {
+              sType: "div", class: "collapse navbar-collapse", id: "navbarSupportedContent", sChilds: [
+                {
+                  sType: "ul", class: "navbar-nav me-auto mb-2 mb-lg-0", sChilds: [
+                    {
+                      sType: "li", class: "nav-item", sChilds: [
+                        { sType: "a", class: "nav-link active", "aria-current": "page", href: "#", text: "Anasayfa" }
+                      ]
+                    },
+                    {
+                      sType: "li", class: "nav-item", sChilds: [
+                        { sType: "a", class: "nav-link", "aria-current": "page", href: "#", text: "Test" }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  sType: "form", class: "d-flex", sChilds: [
+                    { sType: "input", class: "form-control me-2", type: "search", placeholder: "Search", "aria-label": "Search" },
+                    { sType: "button", class: "btn btn-outline-success", type: "submit", text: "Search" }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    };
+    var addButtonComp = [{
+      sType: "div", class: "dropdown dev-button", style: "position:absolute; top:0;",
+      sChilds: [
+        {
+          sType: "button", class: "btn btn-info dev-button", type: "button", id: "dropdownMenuButton1", "data-bs-toggle": "dropdown", "aria-expanded": "false", style: "font-size:10px !important; color:white; width:100%; min-width:20px; height:20px; padding:0px;position:relative;margin-left:auto;", sChilds: [
+            { sType: "i", class: "fa fa-edit dev-button" }
+          ]
+        },
+        {
+          sType: "ul", class: "dropdown-menu dev-button", "aria-labelledby": "dropdownMenuButton1", style: "position:relative;", sChilds: []
+        }
+      ], sParent: { style: { position: "relative" } }
+    }];
+    var template = [
+      navbarComp
+    ];
+    function create(parent, target, removeParent = true) {
+      if (removeParent)
+        parent.empty();
+      target.forEach(element => {
+        var obj = {};
+        Object.keys(element).forEach(nEl => {
+          if (nEl != 'sType' && nEl != 'sChilds')
+            obj[nEl] = element[nEl];
+        });
+        var el = jQuery('<' + element.sType + '/>', obj).appendTo(parent);
+        if (element.sChilds != undefined) {
+          create(el, element.sChilds);
+        }
+        if (element.sParent != undefined) {
+          $(parent).css(element.sParent.style);
+        }
+      });
+    }
+    let createHtml = async function () {
+      create($("app-root"), template);
+    }
+    let add = async function () {
+      template = template.concat([
+        {
+          sType: "div", id: "test", class: "col-md-12 p-3", style: "background-color:red;", sChilds: [
+            { sType: "input", id: "input", name: "test", class: "form-control mb-2", style: "" },
+            { sType: "input", id: "input2", name: "test1", class: "form-control", style: "" }
+          ]
+        }
+      ]);
+      createHtml();
+    }
+    createHtml();
+    let addComponentButton = async function (target, changeParent = false) {
+      var classList = $(target).attr('class').split(/\s+/);
+      stats = true;
+      $.each(classList, function (index, item) {
+        if (item === 'dev-button') {
+          stats = false;
+          $(".dev-button").first().css('min-width', "300px");
+          $(".dev-button").first().css('z-index', "10000");
+        }
+      })
+      if (stats) {
+         addButtonComp[0].sChilds[1].sChilds= [];
+        $(target).each(function () {
+          $.each(target.attributes, function () {
+            if (this.specified) {
+              var inputobj = {
+                sType: "li", class:" p-0 dev-button", sChilds: [{
+                  sType: "div", class: "input-group input-group-sm mb-1 p-1 dev-button", sChilds: [
+                    { sType: "span", class: "input-group-text col dev-button", text: this.name },
+                    { sType: "input", type: "text", class: "form-control col dev-button", value: this.value }
+                  ]
+                }
+                ]
+              };
+              var compobj = addButtonComp[0].sChilds[1].sChilds;
+              compobj[compobj.length] = inputobj;
+            }
+          });
+        });
+        $(".dev-button").remove();
+        $(".dev-active").removeClass("dev-active");
+        $(target).addClass("dev-active");
+        $(target).css("position", "relative");
+        if (changeParent) {
+          create($(target).parent(), addButtonComp, false);
+        }
+        else {
+          create($(target), addButtonComp, false);
+        }
+        var position = $(".dev-button").first().offset();
+        if (screen.width / 2 > position.left) {
+          $(".dev-button").first().css('left', "0");
+        } else {
+          $(".dev-button").first().css('right', "0");
+        }
+
+      }
+
+    }
+    $(window).click(function (e) {
+      try {
+        console.log(e.target);
+        e.preventDefault();
+        var arr = ["input"];
+        if (arr.includes($(e.target).prop("tagName").toLowerCase())) {
+          addComponentButton(e.target, true);
+        }
+        else {
+          var classList = $(e.target).attr('class').split(/\s+/);
+          addComponentButton(e.target);
+        }
+      } catch (error) {
+        addComponentButton("body");
+      }
+    });
+  </script>
+</body>
+
+</html>
