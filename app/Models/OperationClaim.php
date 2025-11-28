@@ -34,12 +34,5 @@ class OperationClaim extends Entity
     #[MaxLength(500)]
     #[Column("Description", "VARCHAR(500)")]
     public string $Description;
-
-    // Audit fields
-    #[Column("CreatedAt", "DATETIME")]
-    public ?\DateTime $CreatedAt = null;
-
-    #[Column("UpdatedAt", "DATETIME")]
-    public ?\DateTime $UpdatedAt = null;
 }
 

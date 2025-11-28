@@ -65,6 +65,8 @@ class UsersController extends BaseApiController
                     ->thenInclude('Department')
                 ->include('UserAuthorizations')
                     ->thenInclude('Authorization')
+                        ->thenInclude('OperationClaims')
+                            ->thenInclude('OperationClaim')
                 ->include('UserOperationClaims')
                     ->thenInclude('OperationClaim');
 
@@ -72,7 +74,7 @@ class UsersController extends BaseApiController
                 $query = $query->where(fn($u) => $u->CompanyId === (int)$companyId);
             }
             /** @var User $u */
-            $query = $query->where(fn($u) => $u->Company->Name =="Firma 1" && $u->CustomField->CustomField01=="xxx");
+            $query = $query->where(fn($u) => $u->Company->Name =="Firma 1");
 
             $total = $query->count();
             $users = $query->skip(($page - 1) * $perPage)

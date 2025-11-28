@@ -44,11 +44,5 @@ class Authorization extends Entity
     #[InverseProperty("Authorization")]
     public array $UserAuthorizations = [];
 
-    // Audit fields
-    #[Column("CreatedAt", "DATETIME")]
-    public ?\DateTime $CreatedAt = null;
-
-    #[Column("UpdatedAt", "DATETIME")]
-    public ?\DateTime $UpdatedAt = null;
 }
 

@@ -62,15 +62,5 @@ class User extends Entity
     /** @var UserOperationClaim[] */
     #[InverseProperty("User")]
     public array $UserOperationClaims = [];
-
-    // Audit fields
-    #[Column("CreatedAt", "DATETIME")]
-    public ?\DateTime $CreatedAt = null;
-
-    #[Column("UpdatedAt", "DATETIME")]
-    public ?\DateTime $UpdatedAt = null;
-
-    #[Column("DeletedAt", "DATETIME")]
-    public ?\DateTime $DeletedAt = null;
 }
 

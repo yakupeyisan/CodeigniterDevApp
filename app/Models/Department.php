@@ -36,11 +36,5 @@ class Department extends Entity
     #[InverseProperty("Department")]
     public array $UserDepartments = [];
 
-    // Audit fields
-    #[Column("CreatedAt", "DATETIME")]
-    public ?\DateTime $CreatedAt = null;
-
-    #[Column("UpdatedAt", "DATETIME")]
-    public ?\DateTime $UpdatedAt = null;
 }
 
