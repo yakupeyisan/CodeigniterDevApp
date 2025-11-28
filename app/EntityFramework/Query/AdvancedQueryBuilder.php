@@ -2483,10 +2483,20 @@ class AdvancedQueryBuilder
                     }
                 }
                 
+                // Get the actual related entity type from buildCollectionSubquery
+                // For collection navigations, navInfo['entityType'] is the join entity (e.g., UserDepartment)
+                // We need to find the actual related entity (e.g., Department) from the join entity
+                $joinEntityType = $navInfo['joinEntityType'];
+                $actualRelatedEntityType = $this->findRelatedEntityFromJoinEntity($joinEntityType, $navPath);
+                if ($actualRelatedEntityType === null) {
+                    // Fallback to navInfo['entityType'] if we can't find it
+                    $actualRelatedEntityType = $navInfo['entityType'];
+                }
+                
                 $collectionNavInfo[$navPath] = [
                     'index' => $collectionIndex,
                     'joinEntityType' => $navInfo['joinEntityType'],
-                    'entityType' => $navInfo['entityType'],
+                    'entityType' => $actualRelatedEntityType, // Use actual related entity, not join entity
                     'thenIncludes' => $thenIncludes
                 ];
                 $collectionIndex++;
