@@ -2,10 +2,10 @@
 
 namespace App\Repositories;
 
-use App\EntityFramework\Repository\Repository;
-use App\EntityFramework\Core\DbContext;
+use Yakupeyisan\CodeIgniter4\EntityFramework\Repository\Repository;
+use Yakupeyisan\CodeIgniter4\EntityFramework\Core\DbContext;
 use App\Models\User;
-use App\EntityFramework\Query\IQueryable;
+use Yakupeyisan\CodeIgniter4\EntityFramework\Query\IQueryable;
 
 /**
  * UserRepository - User entity için özel repository

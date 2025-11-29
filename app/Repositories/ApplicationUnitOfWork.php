@@ -2,9 +2,9 @@
 
 namespace App\Repositories;
 
-use App\EntityFramework\Core\DbContext;
-use App\EntityFramework\Repository\IUnitOfWork;
-use App\EntityFramework\Repository\IRepository;
+use Yakupeyisan\CodeIgniter4\EntityFramework\Core\DbContext;
+use Yakupeyisan\CodeIgniter4\EntityFramework\Repository\IUnitOfWork;
+use Yakupeyisan\CodeIgniter4\EntityFramework\Repository\IRepository;
 
 /**
  * ApplicationUnitOfWork - Özel repository'leri içeren UnitOfWork
@@ -55,7 +55,7 @@ class ApplicationUnitOfWork implements IUnitOfWork
         }
 
         // Generic repository döndür
-        return new \App\EntityFramework\Repository\Repository($this->context, $entityType);
+        return new \Yakupeyisan\CodeIgniter4\EntityFramework\Repository\Repository($this->context, $entityType);
     }
 
     /**

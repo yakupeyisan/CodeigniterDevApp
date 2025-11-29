@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d64dfae3f0cd62c948b1437f12f6a331",
+    "content-hash": "f171177cd89278305a3604101f84d26c",
     "packages": [
         {
             "name": "cboden/ratchet",
@@ -2293,17 +2293,65 @@
             "time": "2022-11-07T18:59:33+00:00"
         },
         {
-            "name": "zircote/swagger-php",
-            "version": "5.7.4",
+            "name": "yakupeyisan/codeigniter4-entity-framework",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/zircote/swagger-php.git",
-                "reference": "dfd637ff3ae344e9db1626ffcfea81b4948da7da"
+                "url": "https://github.com/yakupeyisan/codeigniter4-entity-framework.git",
+                "reference": "3c42672862bc6372e2e44a7e2d829b1bba287b94"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zircote/swagger-php/zipball/dfd637ff3ae344e9db1626ffcfea81b4948da7da",
-                "reference": "dfd637ff3ae344e9db1626ffcfea81b4948da7da",
+                "url": "https://api.github.com/repos/yakupeyisan/codeigniter4-entity-framework/zipball/3c42672862bc6372e2e44a7e2d829b1bba287b94",
+                "reference": "3c42672862bc6372e2e44a7e2d829b1bba287b94",
+                "shasum": ""
+            },
+            "require": {
+                "codeigniter4/framework": "^4.0",
+                "php": "^8.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Yakupeyisan\\CodeIgniter4\\EntityFramework\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Yakup EYİSAN",
+                    "email": "yakupeyisan@gmail.com"
+                }
+            ],
+            "description": "Entity Framework Core for CodeIgniter 4 - A comprehensive ORM solution inspired by .NET Entity Framework Core",
+            "keywords": [
+                "codeigniter4",
+                "database",
+                "entity-framework",
+                "orm",
+                "query-builder"
+            ],
+            "support": {
+                "issues": "https://github.com/yakupeyisan/codeigniter4-entity-framework/issues",
+                "source": "https://github.com/yakupeyisan/codeigniter4-entity-framework/tree/1.0.1"
+            },
+            "time": "2025-11-29T17:29:06+00:00"
+        },
+        {
+            "name": "zircote/swagger-php",
+            "version": "5.7.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zircote/swagger-php.git",
+                "reference": "9a37739401485b42d779495e70548309820d11d6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zircote/swagger-php/zipball/9a37739401485b42d779495e70548309820d11d6",
+                "reference": "9a37739401485b42d779495e70548309820d11d6",
                 "shasum": ""
             },
             "require": {
@@ -2376,9 +2424,9 @@
             ],
             "support": {
                 "issues": "https://github.com/zircote/swagger-php/issues",
-                "source": "https://github.com/zircote/swagger-php/tree/5.7.4"
+                "source": "https://github.com/zircote/swagger-php/tree/5.7.5"
             },
-            "time": "2025-11-27T20:10:09+00:00"
+            "time": "2025-11-28T23:22:21+00:00"
         }
     ],
     "packages-dev": [

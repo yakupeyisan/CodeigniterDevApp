@@ -2,10 +2,10 @@
 
 namespace App\Repositories;
 
-use App\EntityFramework\Repository\Repository;
-use App\EntityFramework\Core\DbContext;
+use Yakupeyisan\CodeIgniter4\EntityFramework\Repository\Repository;
+use Yakupeyisan\CodeIgniter4\EntityFramework\Core\DbContext;
 use App\Models\Company;
-use App\EntityFramework\Query\IQueryable;
+use Yakupeyisan\CodeIgniter4\EntityFramework\Query\IQueryable;
 
 /**
  * CompanyRepository - Company entity için özel repository

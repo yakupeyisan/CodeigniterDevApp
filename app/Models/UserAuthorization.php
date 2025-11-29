@@ -2,15 +2,15 @@
 
 namespace App\Models;
 
-use App\EntityFramework\Core\Entity;
-use App\EntityFramework\Attributes\Table;
-use App\EntityFramework\Attributes\Key;
-use App\EntityFramework\Attributes\DatabaseGenerated;
-use App\EntityFramework\Attributes\Column;
-use App\EntityFramework\Attributes\Required;
-use App\EntityFramework\Attributes\ForeignKey;
-use App\EntityFramework\Attributes\InverseProperty;
-use App\EntityFramework\Attributes\Index;
+use Yakupeyisan\CodeIgniter4\EntityFramework\Core\Entity;
+use Yakupeyisan\CodeIgniter4\EntityFramework\Attributes\Table;
+use Yakupeyisan\CodeIgniter4\EntityFramework\Attributes\Key;
+use Yakupeyisan\CodeIgniter4\EntityFramework\Attributes\DatabaseGenerated;
+use Yakupeyisan\CodeIgniter4\EntityFramework\Attributes\Column;
+use Yakupeyisan\CodeIgniter4\EntityFramework\Attributes\Required;
+use Yakupeyisan\CodeIgniter4\EntityFramework\Attributes\ForeignKey;
+use Yakupeyisan\CodeIgniter4\EntityFramework\Attributes\InverseProperty;
+use Yakupeyisan\CodeIgniter4\EntityFramework\Attributes\Index;
 
 /**
  * UserAuthorization Entity

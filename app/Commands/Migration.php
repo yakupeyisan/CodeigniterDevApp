@@ -4,7 +4,7 @@ namespace App\Commands;
 
 use CodeIgniter\CLI\BaseCommand;
 use CodeIgniter\CLI\CLI;
-use App\EntityFramework\Migrations\MigrationManager;
+use Yakupeyisan\CodeIgniter4\EntityFramework\Migrations\MigrationManager;
 
 /**
  * Migration Command
@@ -96,8 +96,10 @@ class Migration extends BaseCommand
         CLI::write("Migration oluşturuluyor: {$name}", 'yellow');
         
         // Try to generate migration from ApplicationDbContext
-        // addMigration will automatically call generateMigrationFromContext if no callables provided
-        $generated = $manager->generateMigrationFromContext();
+        // MigrationManager will automatically call generateMigrationFromContext if no callables provided
+        // Pass ApplicationDbContext class name explicitly
+        $contextClass = 'App\EntityFramework\ApplicationDbContext';
+        $generated = $manager->generateMigrationFromContext($contextClass);
         
         if ($generated && !empty(trim($generated['up'])) && !empty(trim($generated['down']))) {
             CLI::write("ApplicationDbContext'ten otomatik migration oluşturuluyor...", 'cyan');

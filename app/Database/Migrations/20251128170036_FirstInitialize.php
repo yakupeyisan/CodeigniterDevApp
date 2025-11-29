@@ -2,9 +2,9 @@
 
 namespace App\Database\Migrations;
 
-use App\EntityFramework\Migrations\Migration;
-use App\EntityFramework\Migrations\MigrationBuilder;
-use App\EntityFramework\Migrations\ColumnBuilder;
+use Yakupeyisan\CodeIgniter4\EntityFramework\Migrations\Migration;
+use Yakupeyisan\CodeIgniter4\EntityFramework\Migrations\MigrationBuilder;
+use Yakupeyisan\CodeIgniter4\EntityFramework\Migrations\ColumnBuilder;
 
 class Migration_20251128170036_FirstInitialize extends Migration
 {
